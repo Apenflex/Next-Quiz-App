@@ -75,6 +75,12 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
         router.push(`/quizes/finished/${entry.id}`)
         setSending(false)
     }
+    const handleBackToQuizes = async () => {
+        setSending(true)
+        await saveQuizAnswersToDatabase(entry.id, userAnswers, seconds)
+        router.push(`/quizes/`)
+        setSending(false)
+    }
 
     const allQuestionsAnswered = userAnswers.length === quizzes.length
 
@@ -151,12 +157,19 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
                             {Sending ? <Spinner /> : 'Show results'}
                         </button>
 
-                        <Link
+                        <button
+                            className="text-center rounded-md py-2 px-4 shadow-[0_2px_25px_rgba(158,106,255,0.5)] transition-shadow hover:shadow-[0_2px_25px_rgba(168,122,255,0.6)]"
+                            onClick={handleBackToQuizes}
+                            disabled={Sending}
+                        >
+                            Back to quizes
+                        </button>
+                        {/* <Link
                             className="text-center rounded-md py-2 px-4 shadow-[0_2px_25px_rgba(158,106,255,0.5)] transition-shadow hover:shadow-[0_2px_25px_rgba(168,122,255,0.6)]"
                             href="/quizes/"
                         >
                             Back to quizes
-                        </Link>
+                        </Link> */}
                     </div>
                 )}
             </div>
