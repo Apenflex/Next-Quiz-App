@@ -1,4 +1,5 @@
 import Quiz from "@/components/Quiz"
+import { ParamsId } from '@/types/paramsId'
 import { getUserByClerId } from "@/utils/auth"
 import { prisma } from "@/utils/db"
 
@@ -28,10 +29,8 @@ const getEntry = async (id: string) => {
     })
     return entry
 }
-type Params = {
-    id: string
-}
-const EntryPage = async ({ params }: { params: Params }) => {
+
+const EntryPage = async ({ params }: { params: ParamsId }) => {
     const entry = await getEntry(params.id)
     if (!entry) return null
 

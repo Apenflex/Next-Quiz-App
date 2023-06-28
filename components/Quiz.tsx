@@ -7,15 +7,40 @@ import { useEffect, useState } from 'react'
 import Spinner from '@/components/Spinner'
 import { deleteEntry, saveQuizAnswersToDatabase } from '@/utils/api'
 
-const Quiz = ({ entry }) => {
+type QuizEntry = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    category: string
+    completed: boolean
+    quizTime: number
+    quizzes: Quiz[]
+    userAnswers: string[]
+    userId: string
+}
+
+type Quiz = {
+    id: string
+    quizEntryId: string
+    category: string
+    type: string
+    difficulty: string
+    question: string
+    correctAnswer: string
+    incorrectAnswers: string[]
+}
+
+
+const Quiz = ({ entry }: { entry: QuizEntry }) => {
+    console.log(entry)
     const quizzes = entry.quizzes || []
     const router = useRouter()
     const [Sending, setSending] = useState(false)
     const [Deleting, setDeleting] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [userAnswers, setUserAnswers] = useState([])
+    const [userAnswers, setUserAnswers] = useState<string[]>([])
     const [seconds, setSeconds] = useState(0)
-    const [intervalId, setIntervalId] = useState(null)
+    const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null)
 
     useEffect(() => {
         const id = setInterval(() => {
@@ -29,12 +54,12 @@ const Quiz = ({ entry }) => {
         }
     }, [])
 
-    const handleAnswer = (answer) => {
+    const handleAnswer = (answer: string) => {
         setUserAnswers((prevAnswers) => [...prevAnswers, answer])
         setCurrentQuestion((prevQuestion) => prevQuestion + 1)
     }
 
-    const isAnswered = (questionIndex) => {
+    const isAnswered = (questionIndex: number) => {
         return userAnswers[questionIndex] !== undefined
     }
 

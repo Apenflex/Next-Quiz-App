@@ -8,7 +8,7 @@ const NewEntryCard = () => {
 
     const handleOnClick = async () => {
         const data = await createQuiz()
-        router.push(`/journal/${data.id}`)
+        router.push(`/quizes/${data.id}`)
         router.refresh()
     }
 

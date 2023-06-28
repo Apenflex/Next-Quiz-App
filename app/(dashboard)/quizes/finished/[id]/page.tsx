@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { ParamsId } from "@/types/paramsId"
 import { getUserByClerId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 
@@ -32,10 +33,7 @@ type QuizEntry = {
     }[]
 }
 
-type Params = {
-    id: string
-}
-const resultPage = async ({ params }: { params: Params }) => {
+const resultPage = async ({ params }: { params: ParamsId }) => {
     const results = await getResult(params.id)
     console.log(results)
     const { quizTime, userAnswers, quizzes } = results

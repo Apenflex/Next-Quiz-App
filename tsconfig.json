@@ -23,6 +23,6 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/entry/[id]/route.ts", "app/api/entry/route.ts", "app/(dashboard)/quizes/[id]/page.tsx", "components/Quiz.jsx", "components/EntryCard.tsx", "components/NewEntryCard.tsx", "components/Spinner.tsx", "app/(dashboard)/quizes/finished/[id]/page.tsx", "components/StatChart.jsx", "app/(dashboard)/stats/page.jsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/entry/[id]/route.ts", "app/api/entry/route.ts", "app/(dashboard)/quizes/[id]/page.tsx", "components/Quiz.tsx", "components/EntryCard.tsx", "components/NewEntryCard.tsx", "components/Spinner.tsx", "app/(dashboard)/quizes/finished/[id]/page.tsx", "components/StatChart.tsx", "app/(dashboard)/stats/page.tsx"],
     "exclude": ["node_modules"]
 }

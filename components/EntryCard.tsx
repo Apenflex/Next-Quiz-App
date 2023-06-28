@@ -1,4 +1,27 @@
-const EntryCard = ({ entry }) => {
+type Quiz = {
+    id: string
+    quizEntryId: string
+    category: string
+    type: string
+    difficulty: string
+    question: string
+    correctAnswer: string
+    incorrectAnswers: string[]
+}
+
+type Entry = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    category: string
+    userAnswers: string[]
+    quizTime: number
+    completed: boolean
+    userId: string
+    quizzes: Quiz[]
+}
+
+const EntryCard = ({ entry }: { entry: Entry }) => {
     const { userAnswers, category, quizzes } = entry
     const quizCategory = quizzes.map((quiz) => quiz.category)
     const correctAnswersCount = userAnswers.reduce((count, answer, index) => {
@@ -45,9 +68,11 @@ const EntryCard = ({ entry }) => {
             <div className="flex flex-col gap-2 px-4 py-2">
                 <span className="border-b-2 border-b-neutral-200/30 text-center text-orange-400">List of Categories: </span>
                 {quizCategory.map((item, i) => (
-                    <span key={i} value={item}>
+                    <div key={i}
+                        // value={item}
+                    >
                         {item}
-                    </span>
+                    </div>
                 ))}
             </div>
             <div className="flex justify-between gap-2 px-4 py-3">
