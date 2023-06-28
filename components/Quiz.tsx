@@ -64,16 +64,16 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
     const handleDelete = async () => {
         setDeleting(true)
         await deleteEntry(entry.id)
-        setDeleting(false)
         router.push('/quizes')
+        setDeleting(false)
         router.refresh()
     }
 
     const handleFinishQuiz = async () => {
         setSending(true)
         await saveQuizAnswersToDatabase(entry.id, userAnswers, seconds)
-        setSending(false)
         router.push(`/quizes/finished/${entry.id}`)
+        setSending(false)
     }
 
     const allQuestionsAnswered = userAnswers.length === quizzes.length
