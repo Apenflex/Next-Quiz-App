@@ -1,7 +1,20 @@
 'use client'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
 
-const CustomTooltip = ({ payload }) => {
+type CustomTooltipProps = {
+    payload: {
+        correctAnswersCount: number
+        quizzes: string[]
+        quizTime: number
+        payload: {
+            correctAnswersCount: number
+            quizzes: string[]
+            quizTime: number
+        }
+    }[]
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ payload }) => {
     if (payload && payload.length !== 0) {
         const { correctAnswersCount, quizzes, quizTime } = payload[0].payload
 
@@ -18,7 +31,26 @@ const CustomTooltip = ({ payload }) => {
     return null
 }
 
-const StatChart = ({ data }) => {
+interface EntryStats {
+    category: string
+    userAnswers: string[]
+    quizzes: string[]
+    quizTime: number
+    completed: boolean
+    correctAnswersCount: number
+    totalQuestions: number
+    payload: {
+        correctAnswersCount: number
+        quizzes: string[]
+        quizTime: number
+    }
+}
+
+interface StatChartProps {
+    data: EntryStats[]
+}
+
+const StatChart: React.FC<StatChartProps> = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart width={300} height={100} data={data}>

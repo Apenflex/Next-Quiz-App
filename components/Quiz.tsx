@@ -30,9 +30,7 @@ type Quiz = {
     incorrectAnswers: string[]
 }
 
-
 const Quiz = ({ entry }: { entry: QuizEntry }) => {
-    console.log(entry)
     const quizzes = entry.quizzes || []
     const router = useRouter()
     const [Sending, setSending] = useState(false)
