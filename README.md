@@ -6,6 +6,7 @@ The quiz app also gives you the ability to keep track of your achievements. You 
 
 This app is a great way to pass the time, improve your knowledge and enjoy playing quiz games. test your wits, compare your results with friends and enjoy interesting questions and answers.
 
+
 ## Installation
 
 1. Clone the repo
