@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "paths": {
+            "@/*": ["./*"]
+        }
+    },
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/entry/[id]/route.ts", "app/api/entry/route.ts", "app/(dashboard)/quizes/[id]/page.tsx", "components/Quiz.jsx", "components/EntryCard.tsx", "components/NewEntryCard.tsx", "components/Spinner.tsx", "app/(dashboard)/quizes/finished/[id]/page.tsx", "components/StatChart.jsx", "app/(dashboard)/stats/page.jsx"],
+    "exclude": ["node_modules"]
+}
