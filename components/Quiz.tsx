@@ -90,8 +90,8 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
     }, [allQuestionsAnswered, intervalId])
 
     return (
-        <div className="p-4">
-            <div className="relative w-full h-full gap-3 text-white shadow-[0_5px_35px_rgba(106,210,255,0.5)] rounded-lg p-4">
+        <div className="mx-auto py-4 w-[calc(70%-16px)]">
+            <div className="relative w-full h-full gap-3 text-white shadow-[0_5px_35px_rgba(106,210,255,0.5)] rounded-lg p-9">
                 <span className="absolute top-3 left-3 text-lg font-bold">{seconds}</span>
                 {currentQuestion < quizzes.length ? (
                     <div className="flex flex-col justify-center items-center h-full">
@@ -162,12 +162,6 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
                         >
                             Back to quizes
                         </button>
-                        {/* <Link
-                            className="text-center rounded-md py-2 px-4 shadow-[0_2px_25px_rgba(158,106,255,0.5)] transition-shadow hover:shadow-[0_2px_25px_rgba(168,122,255,0.6)]"
-                            href="/quizes/"
-                        >
-                            Back to quizes
-                        </Link> */}
                     </div>
                 )}
             </div>

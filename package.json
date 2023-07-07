@@ -22,6 +22,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "he": "^1.2.0",
     "next": "13.4.5",
     "postcss": "8.4.24",
     "prettier": "^2.8.8",
@@ -37,6 +38,7 @@
     "*.js": "eslint . --fix"
   },
   "devDependencies": {
+    "@types/he": "^1.2.0",
     "prisma": "^4.15.0"
   }
 }

@@ -1,3 +1,4 @@
+import he from 'he'
 /**
  * @description Function to create url for api requests
  * @param {string} path - path to api endpoint
@@ -12,7 +13,16 @@ export const getAllQuizes = async () => {
         'https://opentdb.com/api.php?amount=10&type=multiple')
     if (res.ok) {
         const data = await res.json()
-        return data.results
+        const fixedData = data.results.map((quiz: any) => {
+            const fixedQuiz = {
+                ...quiz,
+                question: he.decode(quiz.question),
+                correct_answer: he.decode(quiz.correct_answer),
+                incorrect_answers: quiz.incorrect_answers.map((answer: string) => he.decode(answer))
+            }
+            return fixedQuiz
+        })
+        return fixedData
     } else {
         throw new Error('Something went wrong on API server!')
     }
