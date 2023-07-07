@@ -94,10 +94,10 @@ const Quiz = ({ entry }: { entry: QuizEntry }) => {
             <div className="relative w-full h-full gap-3 text-white shadow-[0_5px_35px_rgba(106,210,255,0.5)] rounded-lg p-9">
                 <span className="absolute top-3 left-3 text-lg font-bold">{seconds}</span>
                 {currentQuestion < quizzes.length ? (
-                    <div className="flex flex-col justify-center items-center h-full">
+                    <div className="flex flex-col justify-center items-center w-full h-full">
                         <h2 className="text-lg mb-3">Question {currentQuestion + 1}</h2>
                         <p className="text-xl text-center mb-4">{quizzes[currentQuestion].question}</p>
-                        <ul className="mb-8">
+                        <ul className="mb-8 max-w-[500px] items-start">
                             {quizzes[currentQuestion].incorrectAnswers.map((option) => (
                                 <li className="mb-3 text-xl" key={option}>
                                     <label className="cursor-pointer">

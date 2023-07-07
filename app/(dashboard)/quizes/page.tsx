@@ -1,12 +1,12 @@
-// import he from 'he'
 import Link from 'next/link'
 
 import EntryCard from '@/components/EntryCard'
+import Filter from '@/components/Filter'
 import NewEntryCard from '@/components/NewEntryCard'
 import { getUserByClerId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 
-const getEntries = async () => {
+const getQuizzes = async () => {
     const user = await getUserByClerId()
     const data = await prisma.quizEntry.findMany({
         where: {
@@ -30,18 +30,16 @@ const getEntries = async () => {
             },
         },
     })
-    
+
     return data
 }
 
 const QuizPage = async () => {
-    const quizes = await getEntries()
-    // const decode = he.decode('Which of these words means &quot;idle spectator&quot;?')
-    // console.log('render', decode)
+    const quizes = await getQuizzes()
+
     return (
-        <div className="text-white px-4 py-4 bg-black sm:px-6 sm:py-4">
-            {/* <h2 className="text-3xl text-center mb-6">Quizes</h2> */}
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:grid-cols-2">
+        <div className="text-white px-4 py-4 bg-black sm:px-6 sm:py-20">
+            <div className="grid justify-center grid-cols-1 gap-10 lg:grid-cols-custom-3 sm:grid-cols-2">
                 <NewEntryCard />
                 {quizes.map((quiz) => (
                     <div key={quiz.id}>

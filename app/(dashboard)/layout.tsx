@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                         </div>
                     </nav>
                 </header>
-                <div className="pt-[80px]">{children}</div>
+                <div className="h-screen">{children}</div>
             </div>
         </div>
     )

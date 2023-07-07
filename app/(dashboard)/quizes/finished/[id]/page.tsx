@@ -46,23 +46,25 @@ const resultPage = async ({ params }: { params: ParamsId }) => {
     }, 0)
 
     return (
-        <div className="w-full h-full flex flex-col items-center justify-center gap-12">
-            <div className="flex flex-col gap-6 text-center">
-                <h1 className="text-xl">You result</h1>
-                <div className="text-lg">
-                    Correct answers:
-                    <span className="text-2xl"> {correctAnswersCount}</span>
-                    <span className="font-bold">/ 10</span>
+        <div className="w-full">
+            <div className="h-screen flex flex-col items-center justify-center gap-12 rounded-md shadow-gray-100">
+                <div className="flex flex-col gap-6 text-center">
+                    <h1 className="text-xl">You result</h1>
+                    <div className="text-lg">
+                        Correct answers:
+                        <span className="text-2xl"> {correctAnswersCount}</span>
+                        <span className="font-bold">/ 10</span>
+                    </div>
+                    <div className="text-lg">Time spent: {quizTime} seconds</div>
                 </div>
-                <div className="text-lg">Time spent: {quizTime} seconds</div>
-            </div>
-            <div>
-                <Link
-                    className="rounded-md py-2 px-4 shadow-[0_2px_25px_rgba(158,106,255,0.5)] transition-shadow hover:shadow-[0_2px_25px_rgba(168,122,255,0.6)]"
-                    href="/quizes/"
-                >
-                    Back to quizes
-                </Link>
+                <div>
+                    <Link
+                        className="rounded-md py-2 px-4 shadow-[0_2px_25px_rgba(158,106,255,0.5)] transition-shadow hover:shadow-[0_2px_25px_rgba(168,122,255,0.6)]"
+                        href="/quizes/"
+                    >
+                        Back to quizes
+                    </Link>
+                </div>
             </div>
         </div>
     )

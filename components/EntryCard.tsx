@@ -55,11 +55,11 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
     const difficultyColor = () => {
         switch (difficultyLevel) {
             case 'easy':
-                return 'text-green-400'
+                return 'text-green-500'
             case 'medium':
-                return 'text-yellow-400'
+                return 'text-yellow-500'
             case 'hard':
-                return 'text-red-400'
+                return 'text-red-500'
         }
     }
 
@@ -69,7 +69,7 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
     const correctAnswersPercentage = Math.round((correctAnswersCount / quizzes.length) * 100)
 
     return (
-        <div className="divide-y divide-gray-400/50 overflow-hidden rounded-lg bg-black shadow-[0_2px_9px_rgba(198,255,106,0.6)]">
+        <div className="divide-y divide-gray-400/50 overflow-hidden rounded-lg bg-black shadow-[0_2px_9px_rgba(198,255,106,0.6)] hover:shadow-[0_3px_12px_rgba(198,255,106,0.7)] transition duration-300 ease-in-out ">
             <div className="px-4 py-5">{category}</div>
             <div className="flex flex-col gap-2 px-4 py-2">
                 <span className="border-b-2 border-b-neutral-200/30 text-center text-orange-400">List of Categories: </span>
@@ -85,10 +85,10 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
                 Difficulty:
                 <span className={difficultyColor()}>{difficultyLevel}</span>
             </div>
-            <div className="flex flex-col justify-between px-4 py-3 md:flex-row">
+            <div className="flex justify-between p-4">
                 <div className="flex">
                     <span>Questions:</span>
-                    <span className="text-orange-300 ml-2 font-bold">{questionCount}</span>
+                    <span className="text-orange-600 ml-2 font-bold">{questionCount}</span>
                 </div>
                 <div className="flex items-center">
                     <span className="text-sm">Your Result:</span>

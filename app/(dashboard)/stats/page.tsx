@@ -108,7 +108,7 @@ const StatsPage = async (): Promise<JSX.Element> => {
     const totalCompletedQuizzes = completedQuizzes.length
 
     return (
-        <div className="h-full px-6 py-8">
+        <div className="h-full px-6 py-20">
             <div className="flex flex-col">
                 <span className="text-xl mb-2">{`Tot.Correct Answers: ${accuracyPercentage.toFixed(2)} %`}</span>
                 <span className="text-xl mb-2">{`Completed quizes ${totalCompletedQuizzes}`}</span>
