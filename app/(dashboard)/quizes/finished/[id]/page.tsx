@@ -1,11 +1,20 @@
 import Link from "next/link"
 
 import { ParamsId } from "@/types/paramsId"
-import { getUserByClerId } from '@/utils/auth'
+// import { getUserByClerId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 
+type QuizEntry = {
+    id: string
+    quizTime: number
+    userAnswers: string[]
+    quizzes: {
+        correctAnswer: string
+    }[]
+}
+
 const getResult = async (id: string): Promise<QuizEntry> => {
-    const user = await getUserByClerId()
+    // const user = await getUserByClerId()
     const timeSpent = await prisma.quizEntry.findUnique({
         where: {
             id: id,
@@ -24,18 +33,9 @@ const getResult = async (id: string): Promise<QuizEntry> => {
     return timeSpent as QuizEntry
 }
 
-type QuizEntry = {
-    id: string
-    quizTime: number
-    userAnswers: string[]
-    quizzes: {
-        correctAnswer: string
-    }[]
-}
-
 const resultPage = async ({ params }: { params: ParamsId }) => {
     const results = await getResult(params.id)
-    console.log(results)
+    // console.log(results)
     const { quizTime, userAnswers, quizzes } = results
 
     const correctAnswersCount = userAnswers.reduce((count, answer, index) => {

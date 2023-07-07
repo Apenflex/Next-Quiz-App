@@ -1,7 +1,7 @@
 'use client'
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
-type CustomTooltipProps = {
+type CustomTooltipTypes = {
     payload: {
         correctAnswersCount: number
         quizzes: string[]
@@ -14,7 +14,7 @@ type CustomTooltipProps = {
     }[]
 }
 
-const CustomTooltip: React.FC<CustomTooltipProps> = ({ payload }) => {
+const CustomTooltip: React.FC<CustomTooltipTypes> = ({ payload }) => {
     if (payload && payload.length !== 0) {
         const { correctAnswersCount, quizzes, quizTime } = payload[0].payload
 
@@ -51,12 +51,15 @@ interface StatChartProps {
 }
 
 const StatChart: React.FC<StatChartProps> = ({ data }) => {
+    
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart width={300} height={100} data={data}>
                 <Line type="monotone" dataKey="correctAnswersCount" stroke="#dc91fc" strokeWidth={1} activeDot={{ r: 6 }} />
                 <XAxis dataKey="category" stroke="#9aa0fc" />
-                <Tooltip content={<CustomTooltip payload={data} />} />
+                <Tooltip
+                    content={<CustomTooltip payload={data} />}
+                />
             </LineChart>
         </ResponsiveContainer>
     )

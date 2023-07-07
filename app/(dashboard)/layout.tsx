@@ -9,29 +9,25 @@ const links = [
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="w-screen h-screen relative text-white">
-            <aside className="absolute left-0 top-0 h-full w-[100px] border-r border-white/20 lg:w-[200px]">
-                <div className="px-4 my-4">
-                    <span className="text-3xl">QUIZ</span>
-                </div>
-                <div>
-                    <ul className="px-4">
-                        {links.map((link) => (
-                            <li key={link.name} className="text-xl my-4">
-                                <Link href={link.href}>{link.name}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </aside>
-            <div className="ml-[100px] h-full w-[calc(100vw-100px)] lg:ml-[200px] lg:w-[calc(100vw-200px)]">
-                <header className="h-[60px] border-b border-white/20">
+            <div className="h-full w-full">
+                <header className="fixed w-full h-[60px] bg-black/90 border-b border-white/20">
                     <nav className="px-4 h-full">
-                        <div className="flex items-center justify-end h-full">
+                        <div className="flex items-center justify-between h-full">
+                            <div className="px-4 my-4">
+                                <span className="text-3xl">QUIZ</span>
+                            </div>
+                            <ul className="px-4 flex">
+                                {links.map((link) => (
+                                    <li key={link.name} className="text-xl m-4 hover:text-lime-600 transition-colors">
+                                        <Link href={link.href}>{link.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
                             <UserButton afterSignOutUrl="/" />
                         </div>
                     </nav>
                 </header>
-                <div className="h-[calc(100vh-60px)]">{children}</div>
+                <div className="pt-[80px]">{children}</div>
             </div>
         </div>
     )

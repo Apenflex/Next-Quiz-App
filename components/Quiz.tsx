@@ -9,8 +9,6 @@ import { deleteEntry, saveQuizAnswersToDatabase } from '@/utils/api'
 
 type QuizEntry = {
     id: string
-    createdAt: Date
-    updatedAt: Date
     category: string
     completed: boolean
     quizTime: number

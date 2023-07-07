@@ -37,8 +37,8 @@ const QuizPage = async () => {
     const quizes = await getEntries()
     
     return (
-        <div className="text-white px-4 py-6 bg-black sm:px-6 sm:py-8">
-            <h2 className="text-4xl mb-6">Quizes</h2>
+        <div className="text-white px-4 py-4 bg-black sm:px-6 sm:py-4">
+            {/* <h2 className="text-3xl text-center mb-6">Quizes</h2> */}
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:grid-cols-2">
                 <NewEntryCard />
                 {quizes.map((quiz) => (
