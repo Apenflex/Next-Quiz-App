@@ -53,8 +53,8 @@ interface StatChartProps {
 const StatChart: React.FC<StatChartProps> = ({ data }) => {
     
     return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart width={300} height={100} data={data}>
+        <ResponsiveContainer width="100%" minHeight='70vh'>
+            <LineChart data={data}>
                 <Line type="monotone" dataKey="correctAnswersCount" stroke="#dc91fc" strokeWidth={1} activeDot={{ r: 6 }} />
                 <XAxis dataKey="category" stroke="#9aa0fc" />
                 <Tooltip
