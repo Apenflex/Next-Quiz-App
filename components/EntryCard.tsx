@@ -28,6 +28,7 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
         }
         return count
     }, 0)
+    
     const calculateAverageDifficulty = (quizzes: Quiz[]) => {
         let totalDifficulty = 0
         for (const quiz of quizzes) {

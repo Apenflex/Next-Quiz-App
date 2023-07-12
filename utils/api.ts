@@ -1,4 +1,6 @@
-import he from 'he'
+import { chooseFilterProps } from '@/components/NewEntryCard'
+import { fixData } from '@/utils/helpers'
+import { fetchUrl } from '@/utils/helpers'
 /**
  * @description Function to create url for api requests
  * @param {string} path - path to api endpoint
@@ -8,35 +10,28 @@ export const createUrl = (path: string): string => {
     return window.location.origin + path
 }
 
-export const getAllQuizes = async () => {
-    const res = await fetch(
-        'https://opentdb.com/api.php?amount=10&type=multiple')
+export const getQuizes = async (url: string) => {
+    const res = await fetch(url)
     if (res.ok) {
         const data = await res.json()
-        const fixedData = data.results.map((quiz: any) => {
-            const fixedQuiz = {
-                ...quiz,
-                question: he.decode(quiz.question),
-                correct_answer: he.decode(quiz.correct_answer),
-                incorrect_answers: quiz.incorrect_answers.map((answer: string) => he.decode(answer))
-            }
-            return fixedQuiz
-        })
+        const fixedData = fixData(data.results)
         return fixedData
     } else {
         throw new Error('Something went wrong on API server!')
     }
 }
 
-export const createQuiz = async () => {
-    const data = await getAllQuizes()
+export const createQuiz = async (filterData: chooseFilterProps) => {
+    const { category, difficulty } = filterData
+    
+    const data = await getQuizes(fetchUrl(category.id, difficulty.id))
     const res = await fetch(
         new Request(createUrl('/api/entry'), {
             method: 'POST',
             body: JSON.stringify( data ),
         })
     )
-    
+
     if (res.ok) {
         const data = await res.json()
         return data.data

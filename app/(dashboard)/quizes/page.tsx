@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import EntryCard from '@/components/EntryCard'
-import Filter from '@/components/Filter'
 import NewEntryCard from '@/components/NewEntryCard'
 import { getUserByClerId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
@@ -38,7 +37,7 @@ const QuizPage = async () => {
     const quizes = await getQuizzes()
 
     return (
-        <div className="text-white px-4 py-4 bg-black sm:px-6 sm:py-20">
+        <div className="text-white px-4 pt-20 pb-4 bg-black sm:px-6 sm:pt-20">
             <div className="grid justify-center grid-cols-1 gap-10 lg:grid-cols-custom-3 sm:grid-cols-2">
                 <NewEntryCard />
                 {quizes.map((quiz) => (
