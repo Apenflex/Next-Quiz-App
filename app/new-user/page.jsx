@@ -5,7 +5,7 @@ import { prisma } from '@/utils/db'
 
 const createNewUser = async () => {
     const user = await currentUser()
-    // console.log(user)
+    console.log('New User Data', user)
     const match = await prisma.user.findUnique({
         where: {
             clerkId: user?.id,
@@ -17,9 +17,10 @@ const createNewUser = async () => {
             data: {
                 clerkId: user.id,
                 email: user?.emailAddresses[0]?.emailAddress,
+                name: user.firstName,
             },
         })
-        console.log(newUser)
+        // console.log(newUser)
     }
 
     redirect('/quizes')
